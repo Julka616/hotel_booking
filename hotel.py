@@ -1,44 +1,28 @@
 import json
-from pathlib import Path
-from typing import List, Optional
 from room import Room
 from booking import Booking
 
-
 class Hotel:
-    def __init__(self, data_dir: str):
-        self.data_dir = Path(data_dir)
-        self.rooms: List[Room] = []
-        self.bookings: List[Booking] = []
-        self._load()
+    def __init__(self, rooms_file='data/rooms.json', bookings_file='data/bookings.json'):
+        self.rooms_file = rooms_file
+        self.bookings_file = bookings_file
+        self.rooms = self.load_rooms()
+        self.bookings = self.load_bookings()
 
-    def _load(self):
-        rooms_file = self.data_dir / "rooms.json"
-        bookings_file = self.data_dir / "bookings.json"
-        if rooms_file.exists():
-            with rooms_file.open("r", encoding="utf-8") as f:
-                self.rooms = [Room(**r) for r in json.load(f)]
-        if bookings_file.exists():
-            with bookings_file.open("r", encoding="utf-8") as f:
-                self.bookings = [Booking(**b) for b in json.load(f)]
+    def load_rooms(self):
+        with open(self.rooms_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return [Room(**room) for room in data]
 
-    def save(self):
-        self.data_dir.mkdir(parents=True, exist_ok=True)
-        with (self.data_dir / "rooms.json").open("w", encoding="utf-8") as f:
-            json.dump([r.__dict__ for r in self.rooms], f, indent=2, ensure_ascii=False)
-        with (self.data_dir / "bookings.json").open("w", encoding="utf-8") as f:
-            json.dump([b.__dict__ for b in self.bookings], f, indent=2, ensure_ascii=False)
+    def load_bookings(self):
+        with open(self.bookings_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return [Booking(**booking) for booking in data]
 
-    def add_room(self, room: Room):
-        self.rooms.append(room)
-        self.save()
+    def save_rooms(self):
+        with open(self.rooms_file, 'w', encoding='utf-8') as f:
+            json.dump([room.__dict__ for room in self.rooms], f, indent=2, ensure_ascii=False)
 
-    def add_booking(self, booking: Booking):
-        self.bookings.append(booking)
-        self.save()
-
-    def find_room(self, room_id: int) -> Optional[Room]:
-        for r in self.rooms:
-            if r.id == room_id:
-                return r
-        return None
+    def save_bookings(self):
+        with open(self.bookings_file, 'w', encoding='utf-8') as f:
+            json.dump([booking.__dict__ for booking in self.bookings], f, indent=2, ensure_ascii=False)
