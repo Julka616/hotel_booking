@@ -26,3 +26,6 @@ class Hotel:
     def save_bookings(self):
         with open(self.bookings_file, 'w', encoding='utf-8') as f:
             json.dump([booking.__dict__ for booking in self.bookings], f, indent=2, ensure_ascii=False)
+
+    def list_available_rooms(self):
+        return [room for room in self.rooms if room.available]
