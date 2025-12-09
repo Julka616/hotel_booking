@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Pokój 101",
+    "number": "101",
+    "type": "single",
+    "price": 100.0
+  },
+  {
+    "id": 2,
+    "name": "Pokój 102",
+    "number": "102",
+    "type": "double",
+    "price": 150.0
+  }
+]
