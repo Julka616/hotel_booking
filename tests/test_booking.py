@@ -1,7 +1,11 @@
+import unittest
 from booking import Booking
 
+class TestBooking(unittest.TestCase):
+    def test_booking_initialization(self):
+        booking = Booking(1, 101, "Alice", "2025-12-10", "2025-12-12")
+        self.assertEqual(booking.room_id, 101)
+        self.assertEqual(booking.user_name, "Alice")
 
-def test_booking_dataclass():
-    b = Booking(id=1, room_id=1, guest_name="Jan", check_in="2025-12-01", check_out="2025-12-03")
-    assert b.room_id == 1
-    assert b.guest_name == "Jan"
+if __name__ == "__main__":
+    unittest.main()

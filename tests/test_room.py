@@ -1,7 +1,12 @@
+import unittest
 from room import Room
 
+class TestRoom(unittest.TestCase):
+    def test_room_initialization(self):
+        room = Room(1, "Room A", "Single", 100)
+        self.assertEqual(room.id, 1)
+        self.assertEqual(room.name, "Room A")
+        self.assertTrue(room.available)
 
-def test_room_dataclass():
-    r = Room(id=1, number="101", type="single", price=100.0)
-    assert r.id == 1
-    assert r.number == "101"
+if __name__ == "__main__":
+    unittest.main()
