@@ -2,15 +2,65 @@
   {
     "id": 1,
     "name": "Pokój 101",
-    "number": "101",
     "type": "single",
-    "price": 100.0
+    "price": 100.0,
+    "number": "101",
+    "available": true
   },
   {
     "id": 2,
     "name": "Pokój 102",
-    "number": "102",
     "type": "double",
-    "price": 150.0
+    "price": 150.0,
+    "number": "102",
+    "available": true
+  },
+  {
+    "id": 3,
+    "name": "Pokój 103",
+    "type": "single",
+    "price": 110.0,
+    "number": "103",
+    "available": false
+  },
+  {
+    "id": 4,
+    "name": "Pokój 104",
+    "type": "double",
+    "price": 160.0,
+    "number": "104",
+    "available": true
+  },
+  {
+    "id": 5,
+    "name": "Pokój 201",
+    "type": "suite",
+    "price": 250.0,
+    "number": "201",
+    "available": true
+  },
+  {
+    "id": 6,
+    "name": "Pokój 202",
+    "type": "suite",
+    "price": 300.0,
+    "number": "202",
+    "available": true
+  },
+  {
+    "id": 7,
+    "name": "Pokój 203",
+    "type": "single",
+    "price": 120.0,
+    "number": "203",
+    "available": true
+  },
+  {
+    "id": 8,
+    "name": "Pokój 204",
+    "type": "double",
+    "price": 170.0,
+    "number": "204",
+    "available": true
   }
 ]
